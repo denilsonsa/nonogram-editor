@@ -1,5 +1,7 @@
 # nonogram-editor
 
+NOTE: This is in VERY EARLY stages, still FAR FROM USABLE.
+
 ## Project setup
 ```
 npm install

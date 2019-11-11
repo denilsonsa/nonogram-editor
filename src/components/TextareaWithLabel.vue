@@ -16,6 +16,7 @@
 <style>
 .textarea-with-label {
   display: inline-block;
+  /* Make this inline-flex, so that the textarea expands to fit all height (minus the space used by the label). */
 }
 .textarea-with-label > label {
   display: block;
