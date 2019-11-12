@@ -54,6 +54,8 @@ export default {
     },
   },
   methods: {
+    // TODO: Write down another (two) function(s) to generate the text from a puzzle object.
+    // TODO: Move these functions to a "lib".
     parsePuzzleText(text) {
       // Splitting the dimensions from the hints.
       const [
@@ -79,11 +81,18 @@ export default {
           .filter(hint => hint.trim())
           .map(hint => parseInt(hint, 10))
       );
+      const colHints = hints.slice(0, width);
+      const rowHints = hints.slice(width);
+      // TODO: Detect and report errors, such as:
+      // * ERROR: (width + height) != hints.length
+      // * ERROR/WARN: sum(sum(hints) for colHints) != sum(sum(hints) for rowHints)
+      // * WARN: Dimensions outside the valid range (1..99) (99 just because of display reasons, because I don't want to display 3-digit numbers)
+      // * LATER: any(sum(hints) + hints.length - 1 > height for colHints) -> This would be easily detected when trying to solve the puzzle; so we can wait to detect/report this later.
       return {
         width,
         height,
-        hintlines,
-        hints,
+        colHints,
+        rowHints,
       };
     },
   },
