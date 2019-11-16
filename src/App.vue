@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <NonogramGrid :matrix="sampleGrid" :colHints="sampleColHints" :rowHints="sampleRowHints" />
+    <NonogramGrid
+      :matrix="sampleGrid"
+      :colHints="sampleColHints"
+      :rowHints="sampleRowHints"
+    />
     <TextareaWithLabel id="texthuman" v-model="sampleText" rows="10">
       <template v-slot:label>Easy-to-read:</template>
     </TextareaWithLabel>
@@ -8,10 +12,16 @@
       <template v-slot:label>
         <a
           href="https://www.chiark.greenend.org.uk/~sgtatham/puzzles/js/pattern.html"
-        >Simon Tatham's Portable Puzzle Collection</a>-compatible:
+          >Simon Tatham's Portable Puzzle Collection</a
+        >-compatible:
       </template>
     </TextareaWithLabel>
-    <TextareaWithLabel id="texthuman" :value="parsedTextForDebugging" readonly="true" rows="10">
+    <TextareaWithLabel
+      id="texthuman"
+      :value="parsedTextForDebugging"
+      readonly="true"
+      rows="10"
+    >
       <template v-slot:label>Parsed version:</template>
     </TextareaWithLabel>
   </div>

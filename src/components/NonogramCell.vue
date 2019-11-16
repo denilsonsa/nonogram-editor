@@ -9,7 +9,9 @@
     }"
     :data-x="x"
     :data-y="y"
-  >{{value}}</div>
+  >
+    {{ value }}
+  </div>
 </template>
 
 <style>

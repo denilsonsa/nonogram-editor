@@ -1,6 +1,11 @@
 <template>
   <div class="nonogram-hints" :data-direction="direction">
-    <span class="nonogram-hints--hint" v-for="(hint, index) in hints" :key="index">{{hint}}</span>
+    <span
+      class="nonogram-hints--hint"
+      v-for="(hint, index) in hints"
+      :key="index"
+      >{{ hint }}</span
+    >
   </div>
 </template>
 

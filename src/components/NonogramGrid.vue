@@ -33,10 +33,12 @@
     >
       <!--Row hints -->
     </div>
-    <div style="
+    <div
+      style="
         grid-area: draw;
         background: #eee;
-      ">
+      "
+    >
       <!-- Draw area. -->
     </div>
 
@@ -65,7 +67,13 @@
       }"
     />
     <template v-for="(row, y) in matrix">
-      <NonogramCell v-for="(cell, x) in row" :key="x + ',' + y" :x="x" :y="y" :value="cell" />
+      <NonogramCell
+        v-for="(cell, x) in row"
+        :key="x + ',' + y"
+        :x="x"
+        :y="y"
+        :value="cell"
+      />
     </template>
   </div>
 </template>
