@@ -95,12 +95,8 @@ export function validatePuzzleDefinition(puzzleDefinition) {
     );
   }
 
-  const sumColHints = p.colHints
-    .map(hints => hints.reduce(sumReducer, 0))
-    .reduce(sumReducer, 0);
-  const sumRowHints = p.rowHints
-    .map(hints => hints.reduce(sumReducer, 0))
-    .reduce(sumReducer, 0);
+  const sumColHints = sumArrays(...p.colHints);
+  const sumRowHints = sumArrays(...p.rowHints);
   if (sumColHints !== sumRowHints) {
     errors.push(
       `The columns have a total of ${sumColHints} filled cells, while the rows have ${sumRowHints}`
@@ -110,11 +106,18 @@ export function validatePuzzleDefinition(puzzleDefinition) {
   return errors;
 }
 
-function sumReducer(acc, cur) {
-  return acc + cur;
+// Sum the values of one or more arrays:
+// sumArrays([1,2,3])
+// sumArrays([1,2], [3,4])
+function sumArrays(...arrays) {
+  let sum = 0;
+  for (const arr of arrays) {
+    for (const x of arr) {
+      sum += x;
+    }
+  }
+  return sum;
 }
 
-// TODO: Write down another (two) function(s) to generate the text from a puzzle object.
 // TODO: Detect and report errors, such as:
-// * ERROR/WARN: sum(sum(hints) for colHints) != sum(sum(hints) for rowHints)
 // * LATER: any(sum(hints) + hints.length - 1 > height for colHints) -> This would be easily detected when trying to solve the puzzle; so we can wait to detect/report this later.
