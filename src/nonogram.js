@@ -96,11 +96,11 @@ export function validatePuzzleDefinition(puzzleDefinition) {
   }
 
   const sumColHints = p.colHints
-    .map(hints => hints.reduce(sumReducer))
-    .reduce(sumReducer);
+    .map(hints => hints.reduce(sumReducer, 0))
+    .reduce(sumReducer, 0);
   const sumRowHints = p.rowHints
-    .map(hints => hints.reduce(sumReducer))
-    .reduce(sumReducer);
+    .map(hints => hints.reduce(sumReducer, 0))
+    .reduce(sumReducer, 0);
   if (sumColHints !== sumRowHints) {
     errors.push(
       `The columns have a total of ${sumColHints} filled cells, while the rows have ${sumRowHints}`
