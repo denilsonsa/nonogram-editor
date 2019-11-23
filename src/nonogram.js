@@ -6,7 +6,7 @@
 // Given a string, parses it into a puzzle object.
 export function parsePuzzleText(text) {
   // Splitting the dimensions from the hints.
-  const [
+  let [
     ,
     width,
     height,
@@ -17,6 +17,13 @@ export function parsePuzzleText(text) {
     0,
     "",
   ];
+  if (width && height) {
+    width = parseInt(width, 10);
+    height = parseInt(height, 10);
+  } else {
+    // Invalid string.
+    return null;
+  }
   // Spliting into each line (either row or col) of hints.
   // Also filtering the empty lines.
   const hintlines = hintstring.split(/[\r\n;/]+/).filter(line => line.trim());

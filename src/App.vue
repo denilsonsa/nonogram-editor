@@ -2,8 +2,8 @@
   <div id="app">
     <NonogramGrid
       :matrix="sampleGrid"
-      :colHints="sampleColHints"
-      :rowHints="sampleRowHints"
+      :colHints="puzzleDefinition.colHints"
+      :rowHints="puzzleDefinition.rowHints"
     />
     <TextareaWithLabel
       id="texthuman"
@@ -68,13 +68,9 @@ export default {
     return {
       puzzleDefinition: null,
       puzzleDefinitionErrors: [],
-      // '',
-      puzzleDefinitionSimonTatham:
-        "15x15:1.2.6/2.3.6/4.1.5/7.4/3.4/4.2/4/4.1/6.2/5.1.2.3/3.1.5/1.5/3.5/3/5/2.1/2.2/9.1/10.1/11.1/2.1.4/1.4.1/1.2/2.1.2/2.1.2/3.1.3.1/5.3/5.4/6.5/6.5",
+      puzzleDefinitionSimonTatham: "",
       puzzleDefinitionHumanReadable: "",
 
-      sampleColHints: [[0], [1, 2], [5], [4]],
-      sampleRowHints: [[2], [3], [2], [1, 1, 3], [2]],
       sampleGrid: [
         [0, 0, 1, 1],
         [0, 2, 1, 1],
@@ -84,6 +80,12 @@ export default {
       ],
     };
   },
+  created() {
+    // Just for easy-of-developing, we need a better "empty" state handling.
+    this.puzzleDefinitionSimonTatham =
+      "15x15:1.2.6/2.3.6/4.1.5/7.4/3.4/4.2/4/4.1/6.2/5.1.2.3/3.1.5/1.5/3.5/3/5/2.1/2.2/9.1/10.1/11.1/2.1.4/1.4.1/1.2/2.1.2/2.1.2/3.1.3.1/5.3/5.4/6.5/6.5";
+    this.inputSimonTatham(this.puzzleDefinitionSimonTatham);
+  },
   computed: {
     parsedTextForDebugging() {
       return JSON.stringify(this.puzzleDefinition, null, 2);
@@ -92,22 +94,28 @@ export default {
   methods: {
     // TODO: Replace these with vuex.
     inputSimonTatham(value) {
-      this.puzzleDefinition = parsePuzzleText(value);
-      this.puzzleDefinitionHumanReadable = stringifyPuzzleDefinitionAsHumanReadable(
-        this.puzzleDefinition
-      );
-      this.puzzleDefinitionErrors = validatePuzzleDefinition(
-        this.puzzleDefinition
-      );
+      const def = parsePuzzleText(value);
+      if (def) {
+        this.puzzleDefinition = def;
+        this.puzzleDefinitionHumanReadable = stringifyPuzzleDefinitionAsHumanReadable(
+          def
+        );
+        this.puzzleDefinitionErrors = validatePuzzleDefinition(def);
+      } else {
+        this.puzzleDefinitionErrors = ["Invalid input."];
+      }
     },
     inputHumanReadable(value) {
-      this.puzzleDefinition = parsePuzzleText(value);
-      this.puzzleDefinitionSimonTatham = stringifyPuzzleDefinitionAsSimonTathan(
-        this.puzzleDefinition
-      );
-      this.puzzleDefinitionErrors = validatePuzzleDefinition(
-        this.puzzleDefinition
-      );
+      const def = parsePuzzleText(value);
+      if (def) {
+        this.puzzleDefinition = def;
+        this.puzzleDefinitionSimonTatham = stringifyPuzzleDefinitionAsSimonTathan(
+          def
+        );
+        this.puzzleDefinitionErrors = validatePuzzleDefinition(def);
+      } else {
+        this.puzzleDefinitionErrors = ["Invalid input."];
+      }
     },
   },
 };
