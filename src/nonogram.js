@@ -77,6 +77,13 @@ export function validatePuzzleDefinition(puzzleDefinition) {
   }
 
   // These are errors:
+  if (p.width <= 0) {
+    errors.push(`Invalid width ${p.width}.`);
+  }
+  if (p.height <= 0) {
+    errors.push(`Invalid height ${p.height}.`);
+  }
+
   if (p.width !== p.colHints.length) {
     errors.push(
       `Width=${p.width}, but got ${p.colHints.length} vertical hints.`
