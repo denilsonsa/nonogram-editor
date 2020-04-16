@@ -115,12 +115,14 @@ export default {
     },
     cols() {
       if (this.colHints.length != this.matrix[0].length) {
+        // eslint-disable-next-line no-console
         console.error("Inconsistent number of cols for hints and grid.");
       }
       return Math.max(this.colHints.length, this.matrix[0].length);
     },
     rows() {
       if (this.rowHints.length != this.matrix.length) {
+        // eslint-disable-next-line no-console
         console.error("Inconsistent number of rows for hints and grid.");
       }
       return Math.max(this.rowHints.length, this.matrix.length);

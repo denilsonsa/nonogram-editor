@@ -54,6 +54,7 @@ export default {
     },
     otherListeners() {
       // Inspired by https://zendev.com/2018/05/31/transparent-wrapper-components-in-vue.html
+      // eslint-disable-next-line no-unused-vars
       const { input, ...rest } = this.$listeners;
       return rest;
     },

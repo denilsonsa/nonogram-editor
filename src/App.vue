@@ -21,7 +21,10 @@
     >
       <template v-slot:label>
         <a
-          href="https://www.chiark.greenend.org.uk/~sgtatham/puzzles/js/pattern.html"
+          :href="
+            'https://www.chiark.greenend.org.uk/~sgtatham/puzzles/js/pattern.html#' +
+              puzzleDefinitionSimonTatham
+          "
           >Simon Tatham's Portable Puzzle Collection</a
         >-compatible:
       </template>
