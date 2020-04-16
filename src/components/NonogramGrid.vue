@@ -10,7 +10,7 @@
       style="
         grid-row: col-hints-start / col-hints-end;
         grid-column: row-hints-start / row-hints-end;
-        background: #FFE;
+        background: #ffe;
       "
     >
       <!-- Empty area -->
@@ -33,12 +33,7 @@
     >
       <!--Row hints -->
     </div>
-    <div
-      style="
-        grid-area: draw;
-        background: #eee;
-      "
-    >
+    <div style="grid-area: draw; background: #eee;">
       <!-- Draw area. -->
     </div>
 
@@ -108,10 +103,10 @@ export default {
   },
   computed: {
     colHintsMaxLength() {
-      return Math.max(...this.colHints.map(list => list.length));
+      return Math.max(...this.colHints.map((list) => list.length));
     },
     rowHintsMaxLength() {
-      return Math.max(...this.rowHints.map(list => list.length));
+      return Math.max(...this.rowHints.map((list) => list.length));
     },
     cols() {
       if (this.colHints.length != this.matrix[0].length) {

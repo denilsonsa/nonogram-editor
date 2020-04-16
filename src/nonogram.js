@@ -26,13 +26,13 @@ export function parsePuzzleText(text) {
   }
   // Spliting into each line (either row or col) of hints.
   // Also filtering the empty lines.
-  const hintlines = hintstring.split(/[\r\n;/]+/).filter(line => line.trim());
+  const hintlines = hintstring.split(/[\r\n;/]+/).filter((line) => line.trim());
   // Splitting each line into each individual hint, and converting to integer.
-  const hints = hintlines.map(line =>
+  const hints = hintlines.map((line) =>
     line
       .split(/[ \t.,]+/)
-      .filter(hint => hint.trim())
-      .map(hint => parseInt(hint, 10))
+      .filter((hint) => hint.trim())
+      .map((hint) => parseInt(hint, 10))
   );
   const colHints = hints.slice(0, width);
   const rowHints = hints.slice(width);
@@ -49,7 +49,7 @@ export function stringifyPuzzleDefinitionAsSimonTathan(puzzleDefinition) {
   const p = puzzleDefinition;
   return (
     `${p.width}x${p.height}:` +
-    [...p.colHints, ...p.rowHints].map(hints => hints.join(".")).join("/")
+    [...p.colHints, ...p.rowHints].map((hints) => hints.join(".")).join("/")
   );
 }
 
@@ -57,7 +57,7 @@ export function stringifyPuzzleDefinitionAsHumanReadable(puzzleDefinition) {
   const p = puzzleDefinition;
   return (
     `${p.width}x${p.height}\n` +
-    [...p.colHints, ...p.rowHints].map(hints => hints.join(" ")).join("\n")
+    [...p.colHints, ...p.rowHints].map((hints) => hints.join(" ")).join("\n")
   );
 }
 

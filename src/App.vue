@@ -23,7 +23,7 @@
         <a
           :href="
             'https://www.chiark.greenend.org.uk/~sgtatham/puzzles/js/pattern.html#' +
-              puzzleDefinitionSimonTatham
+            puzzleDefinitionSimonTatham
           "
           >Simon Tatham's Portable Puzzle Collection</a
         >-compatible:
