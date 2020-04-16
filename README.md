@@ -2,6 +2,11 @@
 
 NOTE: This is in VERY EARLY stages, still FAR FROM USABLE.
 
+See also:
+
+* <https://en.wikipedia.org/wiki/Nonogram>
+* <https://www.chiark.greenend.org.uk/~sgtatham/puzzles/js/pattern.html>
+
 ## Project setup
 ```
 npm install
