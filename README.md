@@ -1,6 +1,6 @@
 # nonogram-editor
 
-NOTE: This is in VERY EARLY stages, still FAR FROM USABLE.
+NOTE: This is in VERY EARLY stages, still FAR FROM USABLE. Most of this code was written while I was traveling, and I haven't touched it ever since. It's unlikely that I'll come back to this project again in the near future, so I'm archiving this repository.
 
 See also:
 
